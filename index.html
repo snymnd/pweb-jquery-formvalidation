@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Form javascript</title>
+
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./component.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div>
+                <a href="#intro" class="my">Muhammad Yunus</a>
+            </div>
+        </nav>
+    </header>
+    <main class="main" >
+        <section id="main_form">
+            <div class="">
+                <!-- create form -->
+                <form id="form" name="myform" action="https://snymnd.github.io/pweb-js-form/" onsubmit="submit_form()">
+                    <div class="form-control">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your name" >
+                        <p class="small"></p>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" >
+                        <p class="small"></p>
+                        
+                    </div>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input name="password" id="password" cols="30" rows="10" placeholder="Enter your password" >
+                        <p class="small"></p>
+                    </div>
+                    <input type="submit" class="btn"></input>
+                </form>
+        </section>       
+    </main>
+    <script type="text/javascript" >
+        const form = document.getElementById('form');
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        
+        function isEmail (email) {
+            return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(email);
+        }
+
+        function letters (name) {
+            return /^[a-zA-Z ]+$/.test(name);
+        }
+
+         
+        const submit_form = () => {
+        
+            let email_value = email.value;
+            let password_value = password.value;
+            let name_value = name.value;
+            let error = false;
+
+            if (name_value == "") {
+                error = true;
+                alert( 'Please enter your name' );
+            } else if (!letters(name_value)) {
+                error = true;
+                alert( 'Please enter your name in letters' );
+            } 
+            
+            if(email_value === ''){
+                error = true;
+                alert( 'Email cannot be blank');
+            }else if(!isEmail(email_value)){
+                error = true;
+                alert( 'Not a valid email');
+            }
+
+            if(password_value === ''){
+                error = true;
+                alert('Password cannot be blank');
+            }else if (password_value.length > 9){
+                error = true;
+                alert('Password must be less 8 characters');
+            }else if (password_value.length < 3){
+                error = true;
+                alert( 'Password must be bigger than 4 characters');
+            }
+
+            if (error) {
+                return false;
+            } else {
+                alert('Form Submitted Successfully!');
+                return true;
+            }
+        }
+
+    </script>
+    <footer >
+        <span >© 2022 Muhammad Yunus</span>
+        <ul >
+            <li>
+                <a href="https://www.instagram.com/snymnd/" class=" "><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="https://github.com/snymnd" class=""> <i class="fa fa-github"></i></a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/muhammad-yunus-68920021b/" class="mr-4 "><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+                <a href="mailto: muh.yunus310502@gmail.com" ><i class="fa fa-envelope "></i></a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
